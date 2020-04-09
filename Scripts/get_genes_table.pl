@@ -44,7 +44,7 @@ foreach  (@files) {
 	}
 }
 
-open OUT, ">Bt_all_genes.table" or die "open OUT file faild\t";
+open OUT, ">Bt_all_genes.table" or die "open OUT file faild\n";
 my @strains = sort keys %strain;
 my @genes = sort keys %gene;
 print OUT "-";

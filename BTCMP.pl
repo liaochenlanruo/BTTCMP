@@ -231,37 +231,37 @@ $options{'prot_suffix=s'} = \( my $opt_prot_suffix = ".faa" );
 
 =head1 USAGE
 
-  BTCMP [Options]
+  btcmp [Options]
 
   The main usage is as follows:
 
   Example 1: Processing Illumina paired-end Reads
 
-             BTCMP --SeqPath <Illumina Reads PATH> --SequenceType reads --platform illumina --reads1 <suffix name of reads 1> -reads2 <suffix name of reads 2> --threads <INT> --suffix_len <INT>
+             btcmp --SeqPath <Illumina Reads PATH> --SequenceType reads --platform illumina --reads1 <suffix name of reads 1> -reads2 <suffix name of reads 2> --threads <INT> --suffix_len <INT>
 
   Example 2: Processing PacBio long Reads
 
-             BTCMP --SeqPath <PacBio Reads PATH> --SequenceType reads --platform pacbio --reads1 <suffix name of PacBio reads> --threads <INT> --suffix_len <INT>
+             btcmp --SeqPath <PacBio Reads PATH> --SequenceType reads --platform pacbio --reads1 <suffix name of PacBio reads> --threads <INT> --suffix_len <INT>
 
   Example 3: Processing Oxford long Reads
 
-             BTCMP --SeqPath <Oxford Reads PATH> --SequenceType reads --platform oxford --reads1 <suffix name of Oxford reads> --threads <INT> --suffix_len <INT>
+             btcmp --SeqPath <Oxford Reads PATH> --SequenceType reads --platform oxford --reads1 <suffix name of Oxford reads> --threads <INT> --suffix_len <INT>
 
   Example 4: Processing Hybrid Reads (Long reads + illumina short reads)
 
-             BTCMP --SeqPath <Reads PATH> --SequenceType reads --platform hybrid --short1 <short reads 1> --short2 <short reads 2> --long <long reads> --threads <INT>
+             btcmp --SeqPath <Reads PATH> --SequenceType reads --platform hybrid --short1 <short reads 1> --short2 <short reads 2> --long <long reads> --threads <INT>
 
   Example 5: Processing assembled genomes
 
-             BTCMP --SeqPath <Assembled genome PATH> --SequenceType nucl --Scaf_suffix <suffix of genomes> --threads <INT>
+             btcmp --SeqPath <Assembled genome PATH> --SequenceType nucl --Scaf_suffix <suffix of genomes> --threads <INT>
 
   Example 6: Processing protein sequences
 
-             BTCMP --SeqPath <Protein file PATH> --SequenceType prot --prot_suffix <suffix of protein files> --threads <INT>
+             btcmp --SeqPath <Protein file PATH> --SequenceType prot --prot_suffix <suffix of protein files> --threads <INT>
 
   Example 7: Processing orfs sequences
 
-             BTCMP --SeqPath <orfs file PATH> --SequenceType orfs --orfs_suffix <suffix of orfs files> --threads <INT>
+             btcmp --SeqPath <orfs file PATH> --SequenceType orfs --orfs_suffix <suffix of orfs files> --threads <INT>
 
 =cut
 
@@ -283,7 +283,7 @@ if ($opt_help) {
 # toxin prediction
 if ($opt_SequenceType eq "nucl") {
 	tee STDOUT, ">>BTCMP.log";
-	system("pgcgap --ACC --Assess --scafPath $opt_SeqPath --Scaf_suffix $opt_Scaf_suffix --filter_length 300");
+	system("pgcgap --ACC --Assess --filter_length 300 --scafPath $opt_SeqPath --Scaf_suffix $opt_Scaf_suffix");
 	my @scaf = glob("$opt_SeqPath/*.filtered.fas");
 	foreach  (@scaf) {
 		$_=~/$opt_SeqPath\/(\S+).filtered.fas/;
