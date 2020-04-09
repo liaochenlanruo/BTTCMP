@@ -18,7 +18,7 @@ my $download_dir = "./Results/Toxins/";
 
 my $target_file = File::Spec->catfile("./tmp/", $output);
 if(!system("cp $input $target_file"))  {
-	@results = own::BTCMP($output, $seq_type, $target_file);
+	@results = own::BTTCMP($output, $seq_type, $target_file);
 	foreach (@results)  {
 		system("mv $_ $download_dir");
 	}
