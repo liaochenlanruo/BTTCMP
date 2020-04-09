@@ -140,33 +140,33 @@ __Table 1: Description of \'All_Toxins.txt\'__
 
 |Header|Description|
 |:-----|:----------|
-|Strain||
-|Protein_id||
-|Protein_len||
-|Strand||
-|Gene location on scaffold||
-|SVM||
-|BLAST||
-|HMM||
-|Hit_id||
-|Hit_length||
-|Aln_length||
-|Query start-end||
-|Hit stard-end||
-|Identity||
-|Evalue of blast||
-|Hmm hit||
-|Hmm hit length||
-|Evalue of Hmm||
-|Endotoxin_N||
-|Endotoxin_M||
-|Endotoxin_C||
-|Endotoxin_mid||
-|Toxin_10||
-|ETX_MTX2||
-|Gene sequence||
-|Protein sequence||
-|Scaffold sequence||
+|Strain|The name of your input|
+|Protein_id|The protein ID|
+|Protein_len|The length of protein sequence|
+|Strand|Positive or negative strand where the gene comes from|
+|Gene location on scaffold|Gene coordinates on the genome|
+|SVM|Is the protein predicted by SVM|
+|BLAST|Is the protein predicted by BLAST|
+|HMM|Is the protein predicted by HMM|
+|Hit_id|The subject sequence ID|
+|Hit_length|The length of subject sequence|
+|Aln_length|alignment length (sequence overlap)|
+|Query start-end|Start and end of alignment in query|
+|Hit stard-end|Start and end of alignment in subject|
+|Identity|Percentage of identical matches|
+|Evalue of blast|Expect value of BLAST|
+|Hmm hit|The subject model ID|
+|Hmm hit length|The length of subject model sequence|
+|Evalue of Hmm|Expect value of HMM|
+|Endotoxin_N|Whether the Cry protein contain Endotoxin_N domain|
+|Endotoxin_M|Whether the Cry protein contain Endotoxin_M domain|
+|Endotoxin_C|Whether the Cry protein contain Endotoxin_C domain|
+|Endotoxin_mid|Whether the Cry protein contain Endotoxin_mid domain|
+|Toxin_10|Whether the Cry protein contain Toxin_10 domain|
+|ETX_MTX2|Whether the Cry protein contain ETX_MTX2 domain|
+|Gene sequence|The nucleotide sequence of the toxin|
+|Protein sequence|Amino acid sequence of the toxin|
+|Scaffold sequence|The scaffold sequence where the toxin gene is located|
 
 ## License
 
