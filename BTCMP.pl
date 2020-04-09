@@ -29,7 +29,7 @@ $options{'help|h|?'} = \( my $opt_help );
 
 =item B<[--version]>
 
-Show version number of BtToxin_scanner and exit
+Show version number of BTCMP and exit
 
 =back
 
@@ -231,46 +231,46 @@ $options{'prot_suffix=s'} = \( my $opt_prot_suffix = ".faa" );
 
 =head1 USAGE
 
-  BtToxin_scanner [Options]
+  BTCMP [Options]
 
   The main usage is as follows:
 
   Example 1: Processing Illumina paired-end Reads
 
-             BtToxin_scanner --SeqPath <Illumina Reads PATH> --SequenceType reads --platform illumina --reads1 <suffix name of reads 1> -reads2 <suffix name of reads 2> --threads <INT> --suffix_len <INT>
+             BTCMP --SeqPath <Illumina Reads PATH> --SequenceType reads --platform illumina --reads1 <suffix name of reads 1> -reads2 <suffix name of reads 2> --threads <INT> --suffix_len <INT>
 
   Example 2: Processing PacBio long Reads
 
-             BtToxin_scanner --SeqPath <PacBio Reads PATH> --SequenceType reads --platform pacbio --reads1 <suffix name of PacBio reads> --threads <INT> --suffix_len <INT>
+             BTCMP --SeqPath <PacBio Reads PATH> --SequenceType reads --platform pacbio --reads1 <suffix name of PacBio reads> --threads <INT> --suffix_len <INT>
 
   Example 3: Processing Oxford long Reads
 
-             BtToxin_scanner --SeqPath <Oxford Reads PATH> --SequenceType reads --platform oxford --reads1 <suffix name of Oxford reads> --threads <INT> --suffix_len <INT>
+             BTCMP --SeqPath <Oxford Reads PATH> --SequenceType reads --platform oxford --reads1 <suffix name of Oxford reads> --threads <INT> --suffix_len <INT>
 
   Example 4: Processing Hybrid Reads (Long reads + illumina short reads)
 
-             BtToxin_scanner --SeqPath <Reads PATH> --SequenceType reads --platform hybrid --short1 <short reads 1> --short2 <short reads 2> --long <long reads> --threads <INT>
+             BTCMP --SeqPath <Reads PATH> --SequenceType reads --platform hybrid --short1 <short reads 1> --short2 <short reads 2> --long <long reads> --threads <INT>
 
   Example 5: Processing assembled genomes
 
-             BtToxin_scanner --SeqPath <Assembled genome PATH> --SequenceType nucl --Scaf_suffix <suffix of genomes> --threads <INT>
+             BTCMP --SeqPath <Assembled genome PATH> --SequenceType nucl --Scaf_suffix <suffix of genomes> --threads <INT>
 
   Example 6: Processing protein sequences
 
-             BtToxin_scanner --SeqPath <Protein file PATH> --SequenceType prot --prot_suffix <suffix of protein files> --threads <INT>
+             BTCMP --SeqPath <Protein file PATH> --SequenceType prot --prot_suffix <suffix of protein files> --threads <INT>
 
   Example 7: Processing orfs sequences
 
-             BtToxin_scanner --SeqPath <orfs file PATH> --SequenceType orfs --orfs_suffix <suffix of orfs files> --threads <INT>
+             BTCMP --SeqPath <orfs file PATH> --SequenceType orfs --orfs_suffix <suffix of orfs files> --threads <INT>
 
 =cut
 
-#tee STDOUT, ">>BtToxin_scanner.log";
+#tee STDOUT, ">>BTCMP.log";
 
 GetOptions(%options) or pod2usage("Try '$0 --help' for more information.");
 
 if($opt_version){
-	print "version: 2.0.1\n";
+	print "version: 1.0.1\n";
 	exit 0;
 }
 
@@ -282,7 +282,7 @@ if ($opt_help) {
 
 # toxin prediction
 if ($opt_SequenceType eq "nucl") {
-	tee STDOUT, ">>BtToxin_scanner.log";
+	tee STDOUT, ">>BTCMP.log";
 	system("pgcgap --ACC --Assess --scafPath $opt_SeqPath --Scaf_suffix $opt_Scaf_suffix --filter_length 300");
 	my @scaf = glob("$opt_SeqPath/*.filtered.fas");
 	foreach  (@scaf) {
@@ -294,7 +294,7 @@ if ($opt_SequenceType eq "nucl") {
 	system("get_all_info_nucl.pl");
 	chdir "../../";
 }elsif ($opt_SequenceType eq "orfs") {
-	tee STDOUT, ">>BtToxin_scanner.log";
+	tee STDOUT, ">>BTCMP.log";
 	my @orfs = glob("$opt_SeqPath/*$opt_orfs_suffix");
 	foreach  (@orfs) {
 		$_=~/$opt_SeqPath\/(\S+)$opt_orfs_suffix/;
@@ -305,18 +305,18 @@ if ($opt_SequenceType eq "nucl") {
 	system("get_all_info_orfs.pl");
 	chdir "../../";
 }elsif ($opt_SequenceType eq "prot") {
-	tee STDOUT, ">>BtToxin_scanner.log";
+	tee STDOUT, ">>BTCMP.log";
 	my @prot = glob("$opt_SeqPath/*$opt_prot_suffix");
 	foreach  (@prot) {
 		$_=~/$opt_SeqPath\/(\S+)$opt_prot_suffix/;
 		my $out = $1;
-		system(" coreprocess.pl $_ $out prot");
+		system("coreprocess.pl $_ $out prot");
 	}
 	chdir "Results/Toxins";
 	system("get_all_info_prot.pl");
 	chdir "../../";
 }elsif ($opt_SequenceType eq "reads") {
-	tee STDOUT, ">>BtToxin_scanner.log";
+	tee STDOUT, ">>BTCMP.log";
 	if ($opt_platform eq "illumina") {
 		system("pgcgap --Assemble --platform illumina --assembler auto --filter_length 200 --ReadsPath $opt_SeqPath --reads1 $opt_reads1 --reads2 $opt_reads2 --kmmer 81 --threads $opt_threads --suffix_len $opt_suffix_len");
 		if (! $opt_assemble_only) {
@@ -376,7 +376,7 @@ if ($opt_SequenceType eq "nucl") {
 
 # get toxin tables
 if (! $opt_assemble_only) {
-	tee STDOUT, ">>BtToxin_scanner.log";
+	tee STDOUT, ">>BTCMP.log";
 	chdir "Results/Toxins";
 	system("get_genes_table.pl");
 	chdir "../../";

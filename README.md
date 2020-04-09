@@ -1,10 +1,10 @@
 # High-throughput _Bacillus thuringiensis_ toxin mining pipeline
 
 ![Platform](https://badgen.net/badge/platform/WSL,Linux,macOS?list=|)
-![License](https://badgen.net/github/license/liaochenlanruo/BtToxin_scanner)
-[![GitHubversion](https://badge.fury.io/gh/liaochenlanruo%2FBtToxin_scanner.svg)](https://badge.fury.io/gh/liaochenlanruo%2FBtToxin_scanner)
-![Downloads conda](https://img.shields.io/conda/dn/bioconda/BtToxin_scanner.svg?style=flat)
-[![install with bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](http://bioconda.github.io/recipes/BtToxin_scanner/README.html)
+![License](https://badgen.net/github/license/liaochenlanruo/BTCMP)
+[![GitHubversion](https://badge.fury.io/gh/liaochenlanruo%2FBTCMP.svg)](https://badge.fury.io/gh/liaochenlanruo%2FBTCMP)
+![Downloads conda](https://img.shields.io/conda/dn/bioconda/BTCMP.svg?style=flat)
+[![install with bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](http://bioconda.github.io/recipes/BTCMP/README.html)
 
 ## Contents
 
@@ -28,7 +28,7 @@
 
 ## Introduction
 
-This is an upgraded version of [BtToxin_scanner](http://bcam.hzau.edu.cn/BtToxin_scanner/), a high-throughput, automatic gene mining tool that can mine toxin genes, such as Cry, Cyt and Vip toxins, from _Bacillus thuringiensis_. The pipeline accepts multiple forms of input data including Reads, assembled genomes, ORFs, and protein sequences and can output rich and useful results.
+This is a high-throughput, automatic gene mining tool that can mine toxin genes, such as Cry, Cyt and Vip, etc, from _Bacillus thuringiensis_. The pipeline accepts multiple forms of input data including Reads, assembled genomes, ORFs, and protein sequences and can output rich and useful results.
 
 ## Installation
 
@@ -42,21 +42,21 @@ This is an upgraded version of [BtToxin_scanner](http://bcam.hzau.edu.cn/BtToxin
 
 - Install with Bioconda - OSX/Linux/WSL
 ```
-conda create -n toxin python=3
-conda activate toxin
-conda install BtToxin_scanner
+conda create -n btcmp python=3
+conda activate btcmp
+conda install btcmp
 ```
 
 ## Usage
 ```
-BtToxin_scanner [Options]
+btcmp [Options]
 ```
 
 Options:
 
     [--help]                      Print the help message and exit
 
-    [--version]                   Show version number of BtToxin_scanner and exit
+    [--version]                   Show version number of BTCMP and exit
 
     [--threads (INT)]             Number of threads to be used ( Default 4 )
 
@@ -94,46 +94,46 @@ Options:
 
 - Processing Illumina paired-end Reads
 ```
-BtToxin_scanner --SeqPath <Illumina Reads PATH> --SequenceType reads --platform illumina --reads1 <suffix name of reads 1> -reads2 <suffix name of reads 2> --threads <INT> --suffix_len <INT>
+btcmp --SeqPath <Illumina Reads PATH> --SequenceType reads --platform illumina --reads1 <suffix name of reads 1> -reads2 <suffix name of reads 2> --threads <INT> --suffix_len <INT>
 ```
 
 - Processing PacBio long Reads
 ```
-BtToxin_scanner --SeqPath <PacBio Reads PATH> --SequenceType reads --platform pacbio --reads1 <suffix name of PacBio reads> --threads <INT> --suffix_len <INT>
+btcmp --SeqPath <PacBio Reads PATH> --SequenceType reads --platform pacbio --reads1 <suffix name of PacBio reads> --threads <INT> --suffix_len <INT>
 ```
 
 - Processing Oxford long Reads
 ```
-BtToxin_scanner --SeqPath <Oxford Reads PATH> --SequenceType reads --platform oxford --reads1 <suffix name of Oxford reads> --threads <INT> --suffix_len <INT>
+btcmp --SeqPath <Oxford Reads PATH> --SequenceType reads --platform oxford --reads1 <suffix name of Oxford reads> --threads <INT> --suffix_len <INT>
 ```
 
 - Processing Hybrid Reads (Long reads + illumina short reads)
 ```
-BtToxin_scanner --SeqPath <Reads PATH> --SequenceType reads --platform hybrid --short1 <short reads 1> --short2 <short reads 2> --long <long reads> --threads <INT>
+btcmp --SeqPath <Reads PATH> --SequenceType reads --platform hybrid --short1 <short reads 1> --short2 <short reads 2> --long <long reads> --threads <INT>
 ```
 
 - Processing assembled genomes
 ```
-BtToxin_scanner --SeqPath <Assembled genome PATH> --SequenceType nucl --Scaf_suffix <suffix of genomes> --threads <INT>
+btcmp --SeqPath <Assembled genome PATH> --SequenceType nucl --Scaf_suffix <suffix of genomes> --threads <INT>
 ```
 
 - Processing protein sequences
 ```
-BtToxin_scanner --SeqPath <Protein file PATH> --SequenceType prot --prot_suffix <suffix of protein files> --threads <INT>
+btcmp --SeqPath <Protein file PATH> --SequenceType prot --prot_suffix <suffix of protein files> --threads <INT>
 ```
 
 - Processing orfs sequences
 ```
-BtToxin_scanner --SeqPath <orfs file PATH> --SequenceType orfs --orfs_suffix <suffix of orfs files> --threads <INT>
+btcmp --SeqPath <orfs file PATH> --SequenceType orfs --orfs_suffix <suffix of orfs files> --threads <INT>
 ```
 
 ## License
 
-BtToxin_scanner is free software, licensed under [GPLv3](https://github.com/liaochenlanruo/Bt_toxin_scanner/blob/master/LICENSE).
+BTCMP is free software, licensed under [GPLv3](https://github.com/liaochenlanruo/BTCMP/blob/master/LICENSE).
 
 ## Feedback/Issues
 
-Please report any issues about usage of the software to the [issues page](https://github.com/liaochenlanruo/Bt_toxin_scanner/issues).
+Please report any issues about usage of the software to the [issues page](https://github.com/liaochenlanruo/BTCMP/issues).
 
 ## Citation
 
@@ -143,6 +143,5 @@ If you use this software please cite:
 
 ## Updates
 
-- v2.0.2
-  - Added a pre-formatting step for assembled genomes to aviod the program crash
-  - Added USAGE informations to the help
+- v1.0.2
+  - Waiting...

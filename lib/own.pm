@@ -43,7 +43,7 @@ use File::Basename;
 use File::Spec;
 
 
-=head2  BtToxin_scanner
+=head2  BTCMP
  Title   :
  Usage   :
  Function:
@@ -51,7 +51,7 @@ use File::Spec;
  Args    :
 =cut
 
-sub BtToxin_scanner  {
+sub BTCMP  {
 	my ($output_filename, $seqtype, @seqfile) = @_;
 	my @preprocess_out = Pre_Process($seqtype, @seqfile);
 	my %step1_out = Step1($output_filename, @preprocess_out);
@@ -103,14 +103,14 @@ sub Step1  {
 	my ($output_filename, @files) = @_;
 	my %step1_out;
 	my $dir;
-	my $path = `which BtToxin_scanner`;
-	if ($path=~/(.+)\/BtToxin_scanner/) {
+	my $path = `which BTCMP`;
+	if ($path=~/(.+)\/BTCMP/) {
 		$dir = $1;
 	}
 	my @hmm_models = (
-						$dir . "/BtToxinScanner_models/hmm_models/cry.hmm",
-						$dir . "/BtToxinScanner_models/hmm_models/cyt.hmm",
-						$dir . "/BtToxinScanner_models/hmm_models/vip.hmm",
+						$dir . "/BTCMP_models/hmm_models/cry.hmm",
+						$dir . "/BTCMP_models/hmm_models/cyt.hmm",
+						$dir . "/BTCMP_models/hmm_models/vip.hmm",
 					);
 
 	#Combine all sequence files into seperate file
@@ -326,17 +326,17 @@ sub Step2x  {
 	#my %step2x_out;
 	my %domain;#2020/4/8
 	my $dir;
-	my $path = `which BtToxin_scanner`;
-	if ($path=~/(.+)\/BtToxin_scanner/) {
+	my $path = `which BTCMP`;
+	if ($path=~/(.+)\/BTCMP/) {
 		$dir = $1;
 	}
 	my @domain_models = (
-						$dir . "/BtToxinScanner_models/cry_domains/EndotoxinN.hmm",
-						$dir . "/BtToxinScanner_models/cry_domains/EndotoxinM.hmm",
-						$dir . "/BtToxinScanner_models/cry_domains/EndotoxinC.hmm",
-						$dir . "/BtToxinScanner_models/cry_domains/Endotoxin_mid.hmm",
-						$dir . "/BtToxinScanner_models/cry_domains/ETXMTX2.hmm",
-						$dir . "/BtToxinScanner_models/cry_domains/Toxin10.hmm",
+						$dir . "/BTCMP_models/cry_domains/EndotoxinN.hmm",
+						$dir . "/BTCMP_models/cry_domains/EndotoxinM.hmm",
+						$dir . "/BTCMP_models/cry_domains/EndotoxinC.hmm",
+						$dir . "/BTCMP_models/cry_domains/Endotoxin_mid.hmm",
+						$dir . "/BTCMP_models/cry_domains/ETXMTX2.hmm",
+						$dir . "/BTCMP_models/cry_domains/Toxin10.hmm",
 					);
 	my $input = $output_filename . ".step2";
 	if (-s "$input") {
@@ -607,19 +607,19 @@ sub Blast_search  {
 	my $evalue;
 	my $program;
 	my $dir;
-	my $path = `which BtToxin_scanner`;
-	if ($path=~/(.+)\/BtToxin_scanner/) {
+	my $path = `which BTCMP`;
+	if ($path=~/(.+)\/BTCMP/) {
 		$dir = $1;
 	}
 	if($step eq 'step1')  {
-		$db = $dir . "/BtToxinScanner_db/bt_toxin/db/bt_toxin";
+		$db = $dir . "/BTCMP_db/bt_toxin/db/bt_toxin";
 		$evalue = 1e-25;
 		system("blastp -query $input -out $output -db $db -evalue $evalue -num_threads 4");
 		return $output;
 	}
 
 	if($step eq 'step2')  {
-		$db = $dir . "/BtToxinScanner_db/back/db/back";
+		$db = $dir . "/BTCMP_db/back/db/back";
 		$evalue = 1e-30;
 		system("blastp -query $input -out $output -db $db -evalue $evalue -num_threads 4");
 		return $output;
@@ -710,12 +710,12 @@ sub svm_prediction  {
 #	my $dir = getcwd;
 	my %svm_results;
 	my $dir;
-	my $path = `which BtToxin_scanner`;
-		if ($path=~/(.+)\/BtToxin_scanner/) {
+	my $path = `which BTCMP`;
+		if ($path=~/(.+)\/BTCMP/) {
 		$dir = $1;
 	}
 	#set the parameter 
-	my $svm_model = $dir . "/BtToxinScanner_models/svm_model/model";
+	my $svm_model = $dir . "/BTCMP_models/svm_model/model";
 
 	#set file holding sequence feature
 	my $svm_input = $input . ".feat";
