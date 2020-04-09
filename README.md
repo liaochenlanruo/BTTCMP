@@ -1,6 +1,6 @@
 # High-throughput _Bacillus thuringiensis_ toxin mining pipeline
 
-![Platform](https://badgen.net/badge/platform/WSL,Linux,macOS?list=|)
+![Platform](https://badgen.net/badge/platform/WSL,Linux,macOS,Docker?list=|)
 ![License](https://badgen.net/github/license/liaochenlanruo/BTCMP)
 [![GitHubversion](https://badge.fury.io/gh/liaochenlanruo%2FBTCMP.svg)](https://badge.fury.io/gh/liaochenlanruo%2FBTCMP)
 ![Downloads conda](https://img.shields.io/conda/dn/bioconda/BTCMP.svg?style=flat)
@@ -15,6 +15,8 @@
 - [Usage](#usage)
 
 - [Examples](#examples)
+
+- [Outputs](#outputs)
 
 - [License](#license)
 
@@ -126,6 +128,45 @@ btcmp --SeqPath <Protein file PATH> --SequenceType prot --prot_suffix <suffix of
 ```
 btcmp --SeqPath <orfs file PATH> --SequenceType orfs --orfs_suffix <suffix of orfs files> --threads <INT>
 ```
+
+## Outputs
+
+- __Results/Toxins/*.list:__ Toxin list of each strain;
+- __Results/Toxins/*.gbk:__ Toxin sequences in Genbank format of each strain;
+- __Results/Toxins/Bt_all_genes.table:__ A matrix describes Strains vs. Toxins;
+- __Results/Toxins/All_Toxins.txt:__ A table containing all information and sequences of all toxin genes. See table 1 for details.
+
+__Table 1: Description of \'All_Toxins.txt\'__
+
+|Header|Description|
+|:-----|:----------|
+|Strain||
+|Protein_id||
+|Protein_len||
+|Strand||
+|Gene location on scaffold||
+|SVM||
+|BLAST||
+|HMM||
+|Hit_id||
+|Hit_length||
+|Aln_length||
+|Query start-end||
+|Hit stard-end||
+|Identity||
+|Evalue of blast||
+|Hmm hit||
+|Hmm hit length||
+|Evalue of Hmm||
+|Endotoxin_N||
+|Endotoxin_M||
+|Endotoxin_C||
+|Endotoxin_mid||
+|Toxin_10||
+|ETX_MTX2||
+|Gene sequence||
+|Protein sequence||
+|Scaffold sequence||
 
 ## License
 
