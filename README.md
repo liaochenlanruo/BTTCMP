@@ -131,6 +131,7 @@ btcmp --SeqPath <orfs file PATH> --SequenceType orfs --orfs_suffix <suffix of or
 
 ## Outputs
 
+- __Results/Assembles/*:__ Genome assembly results;
 - __Results/Toxins/*.list:__ Toxin list of each strain;
 - __Results/Toxins/*.gbk:__ Toxin sequences in Genbank format of each strain;
 - __Results/Toxins/Bt_all_genes.table:__ A matrix describes Strains vs. Toxins;
@@ -158,6 +159,7 @@ __Table 1: Description of \'All_Toxins.txt\'__
 |Hmm hit|The subject model ID|
 |Hmm hit length|The length of subject model sequence|
 |Evalue of Hmm|Expect value of HMM|
+|Nomenclature|[Bt nomenclature](http://www.lifesci.sussex.ac.uk/home/Neil_Crickmore/Bt/) containing 4 Ranks|
 |Endotoxin_N|Whether the Cry protein contain Endotoxin_N domain|
 |Endotoxin_M|Whether the Cry protein contain Endotoxin_M domain|
 |Endotoxin_C|Whether the Cry protein contain Endotoxin_C domain|

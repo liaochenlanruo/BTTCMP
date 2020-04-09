@@ -5,7 +5,7 @@ use warnings;
 local $/ = "//";
 
 open OUT, ">All_Toxins.txt" || die;
-print OUT "Strain\tProtein_id\tProtein_len\tStrand\tGene location on scaffold\tSVM\tBLAST\tHMM\tHit_id\tHit_length\tAln_length\tQuery start-end\tHit stard-end\tIdentity\tEvalue of blast\tHmm hit\tHmm hit length\tEvalue of Hmm\tEndotoxin_N\tEndotoxin_M\tEndotoxin_C\tEndotoxin_mid\tToxin_10\tETX_MTX2\tGene sequence\tProtein sequence\tScaffold sequence\n";
+print OUT "Strain\tProtein_id\tProtein_len\tStrand\tGene location on scaffold\tSVM\tBLAST\tHMM\tHit_id\tHit_length\tAln_length\tQuery start-end\tHit stard-end\tIdentity\tEvalue of blast\tHmm hit\tHmm hit length\tEvalue of Hmm\tNomenclature\tEndotoxin_N\tEndotoxin_M\tEndotoxin_C\tEndotoxin_mid\tToxin_10\tETX_MTX2\tGene sequence\tProtein sequence\tScaffold sequence\n";
 
 my @gbk = glob("*.gbk");
 foreach my $gbk (@gbk) {
@@ -41,6 +41,7 @@ foreach my $gbk (@gbk) {
 			my $Endotoxin_N;
 			my $Endotoxin_mid;
 			my $Toxin_10;
+			my $Rank = "NA";
 
 			if (/protein_id=\"(.+?)\"/) {
 				$protein_id = $1;
@@ -68,6 +69,9 @@ foreach my $gbk (@gbk) {
 			}
 			if (/Toxin_10=\"(\S+)\"/) {
 				$Toxin_10 = $1;
+			}
+			if (/Rank=\"(\S+)\"/) {
+				$Rank = $1;
 			}
 			if (/blast_prediction=\"(\S+?)\"/) {
 				$blast_prediction = $1;
@@ -120,7 +124,7 @@ foreach my $gbk (@gbk) {
 				}
 			}
 			my $cds = $scaffold;
-			print OUT "$str\t$protein_id\t$protein_len\t$strand\t$dna_coor\t$svm_prediction\t$blast_prediction\t$hmm_prediction\t$Hit_id\t$Hit_length\t$Aln_length\t$aa_coor\t$Hit_coor\t$identity\t$Evalue_blast\t$Hmm_name\t$Hmm_len\t$Evalue_Hmm\t$Endotoxin_N\t$Endotoxin_M\t$Endotoxin_C\t$Endotoxin_mid\t$Toxin_10\t$ETX_MTX2\t$cds\t$translation\t$scaffold\n";
+			print OUT "$str\t$protein_id\t$protein_len\t$strand\t$dna_coor\t$svm_prediction\t$blast_prediction\t$hmm_prediction\t$Hit_id\t$Hit_length\t$Aln_length\t$aa_coor\t$Hit_coor\t$identity\t$Evalue_blast\t$Hmm_name\t$Hmm_len\t$Evalue_Hmm\t$Rank\t$Endotoxin_N\t$Endotoxin_M\t$Endotoxin_C\t$Endotoxin_mid\t$Toxin_10\t$ETX_MTX2\t$cds\t$translation\t$scaffold\n";
 		}
 	}
 	close IN;
