@@ -1,10 +1,10 @@
 # High-throughput _Bacillus thuringiensis_ toxin mining pipeline
 
 ![Platform](https://badgen.net/badge/platform/WSL,Linux,macOS,Docker?list=|)
-![License](https://badgen.net/github/license/liaochenlanruo/BTCMP)
-[![GitHubversion](https://badge.fury.io/gh/liaochenlanruo%2FBTCMP.svg)](https://badge.fury.io/gh/liaochenlanruo%2FBTCMP)
-![Downloads conda](https://img.shields.io/conda/dn/bioconda/BTCMP.svg?style=flat)
-[![install with bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](http://bioconda.github.io/recipes/BTCMP/README.html)
+![License](https://badgen.net/github/license/liaochenlanruo/BTTCMP)
+[![GitHubversion](https://badge.fury.io/gh/liaochenlanruo%2FBTTCMP.svg)](https://badge.fury.io/gh/liaochenlanruo%2FBTTCMP)
+![Downloads conda](https://img.shields.io/conda/dn/bioconda/BTTCMP.svg?style=flat)
+[![install with bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](http://bioconda.github.io/recipes/BTTCMP/README.html)
 
 ## Contents
 
@@ -44,21 +44,21 @@ This is a high-throughput, automatic gene mining tool that can mine toxin genes,
 
 - Install with Bioconda - OSX/Linux/WSL
 ```
-conda create -n btcmp python=3
-conda activate btcmp
-conda install btcmp
+conda create -n bttcmp python=3
+conda activate bttcmp
+conda install bttcmp
 ```
 
 ## Usage
 ```
-btcmp [Options]
+bttcmp [Options]
 ```
 
 Options:
 
     [--help]                      Print the help message and exit
 
-    [--version]                   Show version number of BTCMP and exit
+    [--version]                   Show version number of BTTCMP and exit
 
     [--threads (INT)]             Number of threads to be used ( Default 4 )
 
@@ -96,37 +96,37 @@ Options:
 
 - Processing Illumina paired-end Reads
 ```
-btcmp --SeqPath <Illumina Reads PATH> --SequenceType reads --platform illumina --reads1 <suffix name of reads 1> -reads2 <suffix name of reads 2> --threads <INT> --suffix_len <INT>
+bttcmp --SeqPath <Illumina Reads PATH> --SequenceType reads --platform illumina --reads1 <suffix name of reads 1> -reads2 <suffix name of reads 2> --threads <INT> --suffix_len <INT>
 ```
 
 - Processing PacBio long Reads
 ```
-btcmp --SeqPath <PacBio Reads PATH> --SequenceType reads --platform pacbio --reads1 <suffix name of PacBio reads> --threads <INT> --suffix_len <INT>
+bttcmp --SeqPath <PacBio Reads PATH> --SequenceType reads --platform pacbio --reads1 <suffix name of PacBio reads> --threads <INT> --suffix_len <INT>
 ```
 
 - Processing Oxford long Reads
 ```
-btcmp --SeqPath <Oxford Reads PATH> --SequenceType reads --platform oxford --reads1 <suffix name of Oxford reads> --threads <INT> --suffix_len <INT>
+bttcmp --SeqPath <Oxford Reads PATH> --SequenceType reads --platform oxford --reads1 <suffix name of Oxford reads> --threads <INT> --suffix_len <INT>
 ```
 
 - Processing Hybrid Reads (Long reads + illumina short reads)
 ```
-btcmp --SeqPath <Reads PATH> --SequenceType reads --platform hybrid --short1 <short reads 1> --short2 <short reads 2> --long <long reads> --threads <INT>
+bttcmp --SeqPath <Reads PATH> --SequenceType reads --platform hybrid --short1 <short reads 1> --short2 <short reads 2> --long <long reads> --threads <INT>
 ```
 
 - Processing assembled genomes
 ```
-btcmp --SeqPath <Assembled genome PATH> --SequenceType nucl --Scaf_suffix <suffix of genomes> --threads <INT>
+bttcmp --SeqPath <Assembled genome PATH> --SequenceType nucl --Scaf_suffix <suffix of genomes> --threads <INT>
 ```
 
 - Processing protein sequences
 ```
-btcmp --SeqPath <Protein file PATH> --SequenceType prot --prot_suffix <suffix of protein files> --threads <INT>
+bttcmp --SeqPath <Protein file PATH> --SequenceType prot --prot_suffix <suffix of protein files> --threads <INT>
 ```
 
 - Processing orfs sequences
 ```
-btcmp --SeqPath <orfs file PATH> --SequenceType orfs --orfs_suffix <suffix of orfs files> --threads <INT>
+bttcmp --SeqPath <orfs file PATH> --SequenceType orfs --orfs_suffix <suffix of orfs files> --threads <INT>
 ```
 
 ## Outputs
@@ -172,11 +172,11 @@ __Table 1: Description of \'All_Toxins.txt\'__
 
 ## License
 
-BTCMP is free software, licensed under [GPLv3](https://github.com/liaochenlanruo/BTCMP/blob/master/LICENSE).
+BTTCMP is free software, licensed under [GPLv3](https://github.com/liaochenlanruo/BTTCMP/blob/master/LICENSE).
 
 ## Feedback/Issues
 
-Please report any issues about usage of the software to the [issues page](https://github.com/liaochenlanruo/BTCMP/issues).
+Please report any issues about usage of the software to the [issues page](https://github.com/liaochenlanruo/BTTCMP/issues).
 
 ## Citation
 
