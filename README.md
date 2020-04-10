@@ -3,8 +3,8 @@
 ![Platform](https://badgen.net/badge/platform/WSL,Linux,macOS,Docker?list=|)
 ![License](https://badgen.net/github/license/liaochenlanruo/BTTCMP)
 [![GitHubversion](https://badge.fury.io/gh/liaochenlanruo%2FBTTCMP.svg)](https://badge.fury.io/gh/liaochenlanruo%2FBTTCMP)
-![Downloads conda](https://img.shields.io/conda/dn/bioconda/BTTCMP.svg?style=flat)
-[![install with bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](http://bioconda.github.io/recipes/BTTCMP/README.html)
+![Downloads conda](https://img.shields.io/conda/dn/bioconda/bttcmp.svg?style=flat)
+[![install with bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](http://bioconda.github.io/recipes/bttcmp/README.html)
 
 ## Contents
 
