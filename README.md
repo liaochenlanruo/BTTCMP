@@ -49,6 +49,12 @@ conda activate bttcmp
 conda install bttcmp
 ```
 
+- Install with the docker container
+```
+docker pull quay.io/biocontainers/bttcmp:&lttag&gt
+```
+See [bttcmp/tags](https://quay.io/repository/biocontainers/bttcmp?tab=tags) for valid values for &lttag&gt)
+
 ## Usage
 ```
 bttcmp [Options]
