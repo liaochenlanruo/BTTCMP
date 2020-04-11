@@ -195,4 +195,4 @@ Please report any issues about usage of the software to the [issues page](https:
 ## Updates
 
 - v1.0.2
-  - Waiting...
+  - Fixed a bug that the program could not find the path of domain model "Toxin10".
