@@ -336,7 +336,7 @@ sub Step2x  {
 						$dir . "/BTTCMP_models/cry_domains/EndotoxinC.hmm",
 						$dir . "/BTTCMP_models/cry_domains/Endotoxin_mid.hmm",
 						$dir . "/BTTCMP_models/cry_domains/ETXMTX2.hmm",
-						$dir . "/BTCMP_models/cry_domains/Toxin10.hmm",
+						$dir . "/BTTCMP_models/cry_domains/Toxin10.hmm",
 					);
 	my $input = $output_filename . ".step2";
 	if (-s "$input") {
