@@ -123,6 +123,7 @@ foreach my $gbk (@gbk) {
 					}
 				}
 			}
+			my $scaf_length = length $scaffold;#2020/4/12
 			my $cds;
 			$dna_coor=~/(\d+)-(\d+)/;
 			my $start = $1;
@@ -132,10 +133,64 @@ foreach my $gbk (@gbk) {
 				my $start1 = $start - 1;
 				my $part = substr($scaffold,$start1, $end-$start1);
 				$cds= &reverse_complement($part);
+				if ($scaf_length > 32000) {#2020/4/12
+					my $prelen = $start1 - 10000;#2020/4/12
+					my $postlen = $scaf_length - $end;#2020/4/12
+					if ($prelen>=0 && $postlen>=10000) {#2020/4/12
+						$scaffold = substr($scaffold, $start1-10000, $end-$start1+20000);#2020/4/12
+						my $start_new = 10001;#2020/4/12
+						my $end_new = $end-$start1 + 10000;#2020/4/12
+						$dna_coor= $start_new . "-" . $end_new;#2020/4/12
+					}elsif ($prelen>=0 && $postlen<10000) {#2020/4/12
+						$scaffold = substr($scaffold, $start1-10000, $end-$start1+10000+$postlen);#2020/4/12
+						my $start_new = 10001;#2020/4/12
+						my $end_new = $end-$start1 + 10000;#2020/4/12
+						$dna_coor= $start_new . "-" . $end_new;#2020/4/12
+					}elsif ($prelen<0 && $postlen>=10000) {#2020/4/12
+						my $prelen2 = $start - 1;
+						$scaffold = substr($scaffold, 0, $end-$start1+10000+$prelen2);#2020/4/12
+						my $start_new = $start;#2020/4/12
+						my $end_new = $end;#2020/4/12
+						$dna_coor= $start_new . "-" . $end_new;#2020/4/12
+					}elsif ($prelen<0 && $postlen<10000) {#2020/4/12
+						my $prelen2 = $start - 1;
+						$scaffold = substr($scaffold, 0, $end-$start1+$postlen+$prelen2);#2020/4/12
+						my $start_new = $start;#2020/4/12
+						my $end_new = $end;#2020/4/12
+						$dna_coor= $start_new . "-" . $end_new;#2020/4/12
+					}#2020/4/12
+				}
 			}else{
 				my $start1 = $start - 1;
 				my $part = substr($scaffold,$start1, $end-$start1);
 				$cds= $part;
+				if ($scaf_length > 32000) {#2020/4/12
+					my $prelen = $start1 - 10000;#2020/4/12
+					my $postlen = $scaf_length - $end;#2020/4/12
+					if ($prelen>=0 && $postlen>=10000) {#2020/4/12
+						$scaffold = substr($scaffold, $start1-10000, $end-$start1+20000);#2020/4/12
+						my $start_new = 10001;#2020/4/12
+						my $end_new = $end-$start1 + 10000;#2020/4/12
+						$dna_coor= $start_new . "-" . $end_new;#2020/4/12
+					}elsif ($prelen>=0 && $postlen<10000) {#2020/4/12
+						$scaffold = substr($scaffold, $start1-10000, $end-$start1+10000+$postlen);#2020/4/12
+						my $start_new = 10001;#2020/4/12
+						my $end_new = $end-$start1 + 10000;#2020/4/12
+						$dna_coor= $start_new . "-" . $end_new;#2020/4/12
+					}elsif ($prelen<0 && $postlen>=10000) {#2020/4/12
+						my $prelen2 = $start - 1;
+						$scaffold = substr($scaffold, 0, $end-$start1+10000+$prelen2);#2020/4/12
+						my $start_new = $start;#2020/4/12
+						my $end_new = $end;#2020/4/12
+						$dna_coor= $start_new . "-" . $end_new;#2020/4/12
+					}elsif ($prelen<0 && $postlen<10000) {#2020/4/12
+						my $prelen2 = $start - 1;
+						$scaffold = substr($scaffold, 0, $end-$start1+$postlen+$prelen2);#2020/4/12
+						my $start_new = $start;#2020/4/12
+						my $end_new = $end;#2020/4/12
+						$dna_coor= $start_new . "-" . $end_new;#2020/4/12
+					}#2020/4/12
+				}
 			}
 			print OUT "$str\t$protein_id\t$protein_len\t$strand\t$dna_coor\t$svm_prediction\t$blast_prediction\t$hmm_prediction\t$Hit_id\t$Hit_length\t$Aln_length\t$aa_coor\t$Hit_coor\t$identity\t$Evalue_blast\t$Hmm_name\t$Hmm_len\t$Evalue_Hmm\t$Rank\t$Endotoxin_N\t$Endotoxin_M\t$Endotoxin_C\t$Endotoxin_mid\t$Toxin_10\t$ETX_MTX2\t$cds\t$translation\t$scaffold\n";
 		}
