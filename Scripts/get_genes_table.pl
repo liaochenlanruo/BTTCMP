@@ -28,7 +28,8 @@ foreach  (@files) {
 			if ($lines[5] eq "YES") {#判断blast是否有结果
 				if ($lines[8] >= 50) {#coverage 低于阈值的不考虑
 					$gene{$lines[6]}++;
-					$hash{$str}{$lines[6]} = $lines[9];#若存在重复基因?
+					#$hash{$str}{$lines[6]} = $lines[9];#若存在重复基因?
+					$hash{$str}{$lines[6]} .= $lines[9] . ",";#若存在重复基因?2020/4/12
 				}
 			}elsif ($lines[-1] eq "YES") {
 				#$lensvm{$lines[3]}++;
@@ -56,8 +57,13 @@ print OUT "\n";
 for (my $i = 0;$i < @strains;$i++) {
 	print OUT $strains[$i];
 	for (my $j = 0;$j < @genes;$j++) {
-		if (exists $hash{$strains[$i]}{$genes[$j]}) {
-		  print OUT "\t" . "$hash{$strains[$i]}{$genes[$j]}";
+		if (exists $hash{$strains[$i]}{$genes[$j]}) {#2020/4/12
+			if ($hash{$strains[$i]}{$genes[$j]}=~/(.+),/) {#2020/4/12
+				print OUT "\t" . $1;#2020/4/12
+			}else {#2020/4/12
+				print OUT "\t" . "$hash{$strains[$i]}{$genes[$j]}";#2020/4/12
+			}#2020/4/12
+			#print OUT "\t" . "$hash{$strains[$i]}{$genes[$j]}";
 		}else{
 			print OUT "\t";
 		}
