@@ -128,7 +128,7 @@ foreach my $gbk (@gbk) {
 				}
 			}
 			my $cds = $scaffold;
-			print OUT "$str\t$protein_id\t$protein_len\t$strand\t$dna_coor\t$svm_prediction\t$blast_prediction\t$hmm_prediction\t$Hit_id\t$Hit_length\t$Aln_length\t$aa_coor\t$Hit_coor\t$identity\t$Evalue_blast\t$Hmm_name\t$Hmm_len\t$Evalue_Hmm\t$Rank\t$Endotoxin_N\t$Endotoxin_M\t$Endotoxin_C\t$Endotoxin_mid\t$Toxin_10\t$ETX_MTX2\t$cds\t$translation\t$scaffold\n";
+			print OUT "$str\t$protein_id\t$protein_len\t$strand\t$dna_coor\t$svm_prediction\t$blast_prediction\t$hmm_prediction\t$Hit_id\t$Hit_length\t$Aln_length\t$aa_coor\t$Hit_coor\t$identity\t$Evalue_blast\t$Hmm_name\t$Hmm_len\t$Evalue_Hmm\t$Rank\t$Endotoxin_N\t$Endotoxin_M\t$Endotoxin_C\t$Endotoxin_mid\t$Toxin_10\t$ETX_MTX2\t$cds\t$translation\tNA\n";
 		}
 	}
 	close IN;
