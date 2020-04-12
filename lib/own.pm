@@ -1725,12 +1725,12 @@ sub print_toxin2  {
 		printf MYHAND ($toxin{$_}->{'coverage'}=~ /\d+/)? ("%0.2f\t", $toxin{$_}->{'coverage'}) : "$toxin{$_}->{'coverage'}\t";
 		printf MYHAND ($toxin{$_}->{'Percent_identity'} =~ /\d+/)? ("%0.2f\t", $toxin{$_}->{'Percent_identity'}):"$toxin{$_}->{'Percent_identity'}\t";
 		print MYHAND $toxin{$_}->{'svm_prediction'}, "\t";###Use of uninitialized value in print
-		print MYHAND $toxin{$_}->{'hmm_prediction'}, "\t"; 
-		print MYHAND $toxin{$_}->{'Endotoxin_N'}, "\t";#2020/4/7
-		print MYHAND $toxin{$_}->{'Endotoxin_M'}, "\t";#2020/4/7
-		print MYHAND $toxin{$_}->{'Endotoxin_C'}, "\t";#2020/4/7
-		print MYHAND $toxin{$_}->{'ETX_MTX2'}, "\t";#2020/4/7
-		print MYHAND $toxin{$_}->{'Toxin_10'}, "\n";#2020/4/7
+		print MYHAND $toxin{$_}->{'hmm_prediction'}, "\n"; #2020/4/12
+		#print MYHAND $toxin{$_}->{'Endotoxin_N'}, "\t";#2020/4/7,2020/4/12
+		#print MYHAND $toxin{$_}->{'Endotoxin_M'}, "\t";#2020/4/7,2020/4/12
+		#print MYHAND $toxin{$_}->{'Endotoxin_C'}, "\t";#2020/4/7,2020/4/12
+		#print MYHAND $toxin{$_}->{'ETX_MTX2'}, "\t";#2020/4/7,2020/4/12
+		#print MYHAND $toxin{$_}->{'Toxin_10'}, "\n";#2020/4/7,2020/4/12
 		$ID++;
 	}
 	print MYHAND "//\n\n\n";
