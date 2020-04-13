@@ -197,7 +197,7 @@ Please report any issues about usage of the software to the [issues page](https:
 - v1.0.2
   - Fixed a bug that the program could not find the path of domain model "Toxin10".
 
- - v1.0.3 = BtToxin_Digger v1.0.1
+- v1.0.3 = BtToxin_Digger v1.0.1
   - Fixed a bug of can not output the information of Cyt and Vip when generating the "Bt_all_genes.table";
   - When there are multiple identical genes in the same strain, their identities can be listed together, separated by commas in the "Bt_all_genes.table" file;
   - Scaffolds over 32,000 characters in length are truncated so that they can be filled into Excel cells.
