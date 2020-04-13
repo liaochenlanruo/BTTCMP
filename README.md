@@ -186,7 +186,7 @@ Please report any issues about usage of the software to the [issues page](https:
 
 ## Citation
 
-- If you use this software please cite: Hualin Liu, Jinshui Zheng, Weixing Ye, Donghai Peng, Ming Sun. BTTCMP: a comprehensive and high-throughput pipeline for mining toxin protein genes from _Bacillus thuringiensis_. 2020, available at [https://github.com/BMBGenomics/BTTCMP](https://github.com/BMBGenomics/BTTCMP).
+- If you use this software please cite: Hualin Liu, Jinshui Zheng, Weixing Ye, Donghai Peng, Ming Sun. BtToxin_Digger: a comprehensive and high-throughput pipeline for mining toxin protein genes from _Bacillus thuringiensis_. 2020, available at [https://github.com/BMBGenomics/BtToxin_Digger](https://github.com/BMBGenomics/BtToxin_Digger).
 
 - If you used the genome assembly function, please also cite: Liu H, Xin B, Zheng J, Zhong H, Yu Y, Peng D, Sun M. Build a bioinformatics analysis platform and apply it to routine analysis of microbial genomics and comparative genomics. _Protocol exchange_, 2020. DOI: [10.21203/rs.2.21224/v2](https://dx.doi.org/10.21203/rs.2.21224/v2).
 
@@ -197,7 +197,7 @@ Please report any issues about usage of the software to the [issues page](https:
 - v1.0.2
   - Fixed a bug that the program could not find the path of domain model "Toxin10".
 
- - v1.0.3
+ - v1.0.3 = BtToxin_Digger v1.0.1
   - Fixed a bug of can not output the information of Cyt and Vip when generating the "Bt_all_genes.table";
   - When there are multiple identical genes in the same strain, their identities can be listed together, separated by commas in the "Bt_all_genes.table" file;
   - Scaffolds over 32,000 characters in length are truncated so that they can be filled into Excel cells.
